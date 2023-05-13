@@ -109,7 +109,9 @@ public class IntList {
         IntList pb = B;
         while (pa != null) {
             res.first = pa.first;
-            res.rest = new IntList();
+            if (pa.rest != null || pb != null) {
+                res.rest = new IntList();
+            }
             pa = pa.rest;
             res = res.rest;
         }
