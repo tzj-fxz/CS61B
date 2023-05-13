@@ -59,10 +59,10 @@ public class NBody {
             time += dt;
         }
 
-        StdOut.printf("%d/n", planets.length);
-        StdOut.printf("%.2e/n", radius);
+        StdOut.printf("%d\n", planets.length);
+        StdOut.printf("%.2e\n", radius);
         for (int i = 0; i < Nnum; i += 1) {
-            StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s/n",
+            StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
                     planets[i].xxPos, planets[i].yyPos, planets[i].xxVel,
                     planets[i].yyVel, planets[i].mass, planets[i].imgFileName);
         }
