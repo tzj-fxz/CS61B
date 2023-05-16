@@ -24,16 +24,16 @@ public class LinkedListDeque<T> {
         return size;
     }
 
-    public void addFirst(T _item) {
+    public void addFirst(T item0) {
         size += 1;
-        Node cur = new Node(_item, sentinel, sentinel.next);
+        Node cur = new Node(item0, sentinel, sentinel.next);
         sentinel.next.prev = cur;
         sentinel.next = cur;
     }
 
-    public void addLast(T _item) {
+    public void addLast(T item0) {
         size += 1;
-        Node cur = new Node(_item, sentinel.prev, sentinel);
+        Node cur = new Node(item0, sentinel.prev, sentinel);
         sentinel.prev.next = cur;
         sentinel.prev = cur;
     }

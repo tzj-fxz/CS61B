@@ -31,22 +31,22 @@ public class ArrayDeque<T> {
         nextLast = 0;
     }
 
-    public void addFirst(T _item) {
+    public void addFirst(T item0) {
         if (size >= a.length) {
             resizeUp();
         }
         size += 1;
-        a[nextFirst] = _item;
+        a[nextFirst] = item0;
         nextFirst -= 1;
-        nextFirst %= a.length;
+        nextFirst = (nextFirst + a.length) % a.length;
     }
 
-    public void addLast(T _item) {
+    public void addLast(T item0) {
         if (size >= a.length) {
             resizeUp();
         }
         size += 1;
-        a[nextLast] = _item;
+        a[nextLast] = item0;
         nextLast += 1;
         nextLast %= a.length;
     }
@@ -72,7 +72,7 @@ public class ArrayDeque<T> {
         T cur = a[(nextLast - 1) % a.length];
         size -= 1;
         nextLast -= 1;
-        nextLast %= a.length;
+        nextLast = (nextLast + a.length) % a.length;
         if (size <= a.length / 4) {
             resizeDown();
         }
