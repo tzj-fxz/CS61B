@@ -1,13 +1,13 @@
 public class LinkedListDeque<T> {
-    public class Node {
-        public T item;
-        public Node prev;
-        public Node next;
+    private class Node {
+        private T item;
+        private Node prev;
+        private Node next;
 
-        public Node(T _item, Node _prev, Node _next) {
-            item = _item;
-            prev = _prev;
-            next = _next;
+        public Node(T item0, Node prev0, Node next0) {
+            item = item0;
+            prev = prev0;
+            next = next0;
         }
     }
     private Node sentinel;
@@ -92,14 +92,14 @@ public class LinkedListDeque<T> {
         if (index >= size) {
             return null;
         }
-        return Recursive(index, sentinel.next);
+        return recursive(index, sentinel.next);
     }
 
-    public T Recursive(int index, Node p) {
+    private T recursive(int index, Node p) {
         if (index == 0) {
             return p.item;
         } else {
-            return Recursive(index - 1, p.next);
+            return recursive(index - 1, p.next);
         }
     }
 }

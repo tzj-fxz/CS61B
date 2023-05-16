@@ -4,7 +4,7 @@ public class ArrayDeque<T> {
     private int nextFirst;
     private int nextLast;
 
-    public void resizeUp() {
+    private void resizeUp() {
         T[] b = (T[]) new Object[a.length * 2];
         for (int i = 0; i < a.length; ++i) {
             b[i] = a[(nextFirst + i + 1) % a.length];
@@ -14,7 +14,7 @@ public class ArrayDeque<T> {
         a = b;
     }
 
-    public void resizeDown() {
+    private void resizeDown() {
         T[] b = (T[]) new Object[a.length / 2];
         for (int i = 0; i < a.length / 4; ++i) {
             b[i] = a[(nextFirst + i + 1) % a.length];
