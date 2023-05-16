@@ -59,7 +59,7 @@ public class ArrayDeque<T> {
         size -= 1;
         nextFirst += 1;
         nextFirst %= a.length;
-        if (size <= a.length / 4) {
+        if (size <= a.length / 4 && a.length > 16) {
             resizeDown();
         }
         return cur;
@@ -69,11 +69,11 @@ public class ArrayDeque<T> {
         if (size == 0) {
             return null;
         }
-        T cur = a[(nextLast - 1) % a.length];
+        T cur = a[(nextLast - 1 + a.length) % a.length];
         size -= 1;
         nextLast -= 1;
         nextLast = (nextLast + a.length) % a.length;
-        if (size <= a.length / 4) {
+        if (size <= a.length / 4 && a.length > 16) {
             resizeDown();
         }
         return cur;
