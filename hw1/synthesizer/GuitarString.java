@@ -1,4 +1,3 @@
-// TODO: Make sure to make this class a part of the synthesizer package
 package synthesizer;
 
 //Make sure this class is public
@@ -14,7 +13,10 @@ public class GuitarString {
 
     /* Create a guitar string of the given frequency.  */
     public GuitarString(double frequency) {
-        buffer = new ArrayRingBuffer<Double>((int)(Math.round(SR/frequency)));
+        buffer = new ArrayRingBuffer<>((int) Math.round(SR / frequency));
+        while (!buffer.isFull()) {
+            buffer.enqueue(0.0);
+        }
     }
 
 
@@ -33,8 +35,7 @@ public class GuitarString {
      */
     public void tic() {
         double cur = buffer.dequeue();
-        double next = buffer.peek();
-        buffer.enqueue((cur + next) * DECAY / 2);
+        buffer.enqueue((cur + sample()) * DECAY / 2);
     }
 
     /* Return the double at the front of the buffer. */
